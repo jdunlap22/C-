@@ -13,12 +13,11 @@ void exitProgram();
 void CalculatePlayerScore();
 void CalculateHouseScore();
 void extern ShuffleDeck();
-//void ShuffleDeck();
 
 int main () {
 
-    std::vector <Card> Card;
-    std::vector <Player> Player;
+    Card card;
+    std::vector <Player> player;
 
     MainMenu();
 
@@ -26,9 +25,9 @@ int main () {
 
     std::cin >> choice;
 
-    if (choice = "A" || "a") {
-        ShuffleDeck();
-        StartGame(Card);
+    if (choice == "A" || choice == "a") {
+        card.ShuffleDeck();
+        StartGame(card, player);
     } else {
         exitProgram();
     }
@@ -61,12 +60,16 @@ void StartGame(std::vector <Card> Card) {
 }
 
 void PlayerHit(std::vector <Card> Card) {
-//New card given and score is updated
+//cards given and score is updated
+    int NumCards;
+    for (int i = 0 < NumCards; i++;) {
+
+    }
 }
 
 void CalculatePlayerScore(std::vector <Player> Player) {
 //everytime new card is drawn if score over 21, player loses (ace is 1 or 11) less than 21 score is ok
-if (Player->getTotalScore() > 21) {
+if (Player.getTotalScore() > 21) {
     std::cout << "You BUST!" << std::endl;
     CalculateHouseScore();
 }
