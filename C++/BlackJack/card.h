@@ -5,7 +5,7 @@ class Card {
 
     private:
     int Deck[52];
-    int CardValue[13] = {1,2,3,4,5,6,7,8,9,10,10,10};
+    int CardValue[13] = {1,2,3,4,5,6,7,8,9,10,10,10,11};
 
     void ShuffleDeck(int Deck[]) {
         int temp = 0;
@@ -19,5 +19,7 @@ class Card {
     }
 
     public:
+    Card();
     Card(int Deck[52]);
+    ~Card();
 };

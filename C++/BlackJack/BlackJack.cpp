@@ -7,24 +7,28 @@
 #include <string>
 
 void MainMenu();
-void StartGame();
-void PlayerHit();
+void StartGame(std::vector <Card> Card);
+void PlayerHit(std::vector <Player> Player);
 void exitProgram();
 void CalculatePlayerScore();
 void CalculateHouseScore();
-void ShuffleDeck();
+void extern ShuffleDeck();
+//void ShuffleDeck();
 
 int main () {
-    std::vector <blackjacks> blackjack;
-    blackjacks blackjack;
 
-    void MainMenu();
+    std::vector <Card> Card;
+    std::vector <Player> Player;
+
+    MainMenu();
 
     int choice = 0;
 
-    if (choice == 1) {
+    std::cin >> choice;
+
+    if (choice = "A" || "a") {
         ShuffleDeck();
-        StartGame();
+        StartGame(Card);
     } else {
         exitProgram();
     }
@@ -35,7 +39,8 @@ void MainMenu() {
     std::string Name;
     std::cout << "Please Enter Name" << std::endl;
     std::cin >> Name;
-    std::cout << "Options Menu" << std::endl;
+    std::cout << "Hello " << Name << std::endl;
+    std::cout << "OPTIONS MENU" << std::endl;
     std::cout << "A. Start Game" << std::endl;
     std::cout << "B. Exit" << std::endl;
 }
@@ -46,23 +51,30 @@ void exitProgram() {
     exit(0);
 }
 
-void StartGame() {
+void StartGame(std::vector <Card> Card) {
     std::string choice;
     std::cout << "Type 'Hit' or 'Stay' to continue" << std::endl;
     std::cin >> choice;
     if (choice == "Hit") {
-        PlayerHit();
+        PlayerHit(Card);
     }
 }
 
-void PlayerHit(std::vector <blackjacks> &blackjack) {
+void PlayerHit(std::vector <Card> Card) {
 //New card given and score is updated
 }
 
-void CalculatePlayerScore(std::vector <blackjacks> &blackjack) {
+void CalculatePlayerScore(std::vector <Player> Player) {
 //everytime new card is drawn if score over 21, player loses (ace is 1 or 11) less than 21 score is ok
+if (Player->getTotalScore() > 21) {
+    std::cout << "You BUST!" << std::endl;
+    CalculateHouseScore();
 }
 
-void CalculateHouseScore(std::vector <blackjacks> &blackjack) {
+}
+
+void CalculateHouseScore(std::vector <Card> Card) {
 //For house house draws cards from where player left off.
+if (Player->getTotalScore() > 21) {
+    std::cout << "House BUST!" << std::endl;
 }
