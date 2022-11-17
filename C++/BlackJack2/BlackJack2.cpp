@@ -6,9 +6,9 @@
 #include <algorithm>
 #include <string>
 
-void MainMenu();
-void StartGame(card Card1, player Player1);
-void PlayerHit();
+void MainMenu(player Player1);
+void PlayerHit(card Card1, int &score);
+void CalculateScore();
 void exitProgram();
 void ShuffleDeck();
 
@@ -16,8 +16,9 @@ int main () {
 
     card Card1;
     player Player1;
+    int score = 0;
 
-    MainMenu();
+    MainMenu(Player1);
 
     std::string choice;
 
@@ -25,9 +26,32 @@ int main () {
 
     if (choice == "A" || choice == "a") {
         Card1.ShuffleDeck();
-        StartGame(Card1);
     } else {
         exitProgram();
+    }
+
+    int NumCards = 2;
+    //Card1.Display();
+
+    for ( int i = 0; i < NumCards; i++ ) {
+        int CardNum = Card1.getNumCards(i);
+        int CardValue = Card1.getCardValue(CardNum);
+        score += CardValue;
+        Card1.setCardIndex(i);
+        std::cout << CardValue << " " << score << std::endl;
+    }
+
+    bool ChoiceHit = true;
+    while (ChoiceHit) {
+        std::cout << "Type 'Hit' or 'Stay' to continue" << std::endl;
+        std::cin >> choice;
+     if (choice == "Hit") {
+        PlayerHit(Card1, score);
+        //CalculateScore();
+     } else {
+        ChoiceHit = false;
+        //CalculateHouseScore();
+     }
     }
 }
 
@@ -49,14 +73,17 @@ void exitProgram() {
     exit(0);
 }
 
-void StartGame(card Card1) {
-    int Score = 0;
-    std::string choice;
-    std::cout << Card1.getNumCards(0) << " " << Card1.getNumCards(1) <<std::endl;
-    Score = Card1.setCardValue(0) + Card1.setCardValue(1);
-    std::cout << "Type 'Hit' or 'Stay' to continue" << std::endl;
-    std::cin >> choice;
-    if (choice == "Hit") {
-        std::cout << Card1.getNumCards(2) << std::endl;
-    }
+void PlayerHit(card Card1, int &score) {
+    int CardNum = Card1.getCardIndex() + 1;
+    int CardValue = Card1.getCardValue(CardNum);
+    score += CardValue;
+    std::cout << CardValue << " " << score << std::endl;
+}
+
+void CalculateScore() {
+
+}
+
+void CalculateHouseScore() {
+
 }

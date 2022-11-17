@@ -4,7 +4,7 @@ class card {
     private:
         int Deck[52];
         int NumCards;
-        int CardValue;
+        int CardIndex;
     public:
 
     card();
@@ -14,8 +14,12 @@ class card {
     int getNumCards(int position);
     void setNumCards(int NumCards);
 
+    int getCardIndex();
+    void setCardIndex(int CardIndex);
+
     int getCardValue(int number);
     void setCardValue(int CardValue);
 
     void ShuffleDeck();
+    void Display();
 };
